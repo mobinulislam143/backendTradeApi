@@ -2,23 +2,24 @@ const nodemailer=require('nodemailer');
 
 const EmailSend=async (EmailTo,EmailText,EmailSubject)=>{
 
-     let  transport= nodemailer.createTransport({
-            host:"mail.teamrabbil.com",
-            port:25,
-            secure:false,
-            auth:{user:"info@teamrabbil.com",pass:"~sR4[bhaC[Qs"},
-            tls:{rejectUnauthorized:false}
-        })
+    const transporter = nodemailer.createTransport({
+        host: 'smtp-relay.brevo.com',
+        port: 587,
+        auth: {
+            user: 'mobinulislammahi@gmail.com',
+            pass: 'V5gpBWJFAfshG3wK'
+        }
+    });
 
 
     let mailOption={
-         from:'Web app solution <info@teamrabbil.com>',
+         from:'MERN Ecommerce Solution <mobinulislammahi@gmail.com>',
          to:EmailTo,
          subject:EmailSubject,
          text:EmailText
     }
 
-    return await transport.sendMail(mailOption)
+    return await transporter.sendMail(mailOption)
 }
 
 module.exports=EmailSend;
