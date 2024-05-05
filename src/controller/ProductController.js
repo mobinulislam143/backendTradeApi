@@ -9,7 +9,7 @@ cloudinary.config({
     cloud_name: 'dmpsrcunj', 
     api_key: '368331831895173', 
     api_secret: '8P65ZkatdVy5oB4VdBa8APdY6h0' 
-  });
+});
 
 exports.CreateProduct = async(req, res)=>{
     try{
@@ -108,7 +108,7 @@ exports.updateProduct = async(req, res) => {
         res.status(400).json({status:"fail",data:e.toString()})
     }
 }
-exports.ProductByKeyword = async(req, res) => {
+exports.ProductByKeywordname = async(req, res) => {
     try{
         let SearchRegex = {"$regex": req.params.keyword, "$options": "i"};
         let SearchParams = [{name: SearchRegex}]

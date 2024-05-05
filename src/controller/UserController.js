@@ -82,6 +82,7 @@ exports.login = async (req, res) => {
         // Password matches
         let user_id = user._id.toString();
         let token = EncodeToken(email, user_id);
+        
         let CookieOption = { expires: new Date(Date.now() + 24 * 60 * 60 * 1000), httpOnly: false };
         res.cookie('token', token, CookieOption);
 

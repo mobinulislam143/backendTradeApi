@@ -27,6 +27,7 @@ router.post('/changeImage', AuthverifyMiddleware, upload.single('profileImage'),
 
 //product
 router.post('/create-product', AuthverifyMiddleware, upload.single('image'), ProductController.CreateProduct)
+
 router.post('/update-product/:productId', AuthverifyMiddleware, upload.single('image'), ProductController.updateProduct)
 
 router.get('/All-product',  ProductController.AllProduct)
@@ -34,7 +35,7 @@ router.get('/ReadProductById/:productId', AuthverifyMiddleware,  ProductControll
 router.get('/userallProduct', AuthverifyMiddleware,  ProductController.UserAllProduct)
 router.get('/deleteProductByUser/:productId', AuthverifyMiddleware,  ProductController.deleteProductByUser)
 // Search Product Route
-router.get('/product-by-keyword/:keyword', AuthverifyMiddleware, ProductController.ProductByKeyword)
+router.get('/product-by-keyword/:keyword', AuthverifyMiddleware, ProductController.ProductByKeywordname)
 router.post('/ProductByBrandAndCategory', AuthverifyMiddleware, ProductController.ProductByBrandAndCategory)
 
 
