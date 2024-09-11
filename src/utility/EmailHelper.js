@@ -1,25 +1,30 @@
 const nodemailer=require('nodemailer');
+require("dotenv").config()
+let pass = process.env.SMTP_PASS
+let smtpTransport = require("nodemailer-smtp-transport");
 
 const EmailSend=async (EmailTo,EmailText,EmailSubject)=>{
 
-    const transporter = nodemailer.createTransport({
-        host: 'smtp-relay.brevo.com',
-        port: 587,
-        auth: {
-            user: 'mobinulislammahi@gmail.com',
-            pass: 'V5gpBWJFAfshG3wK'
-        }
-    });
-
-
-    let mailOption={
-         from:'MERN Ecommerce Solution <mobinulislammahi@gmail.com>',
-         to:EmailTo,
-         subject:EmailSubject,
-         text:EmailText
+    let transporter = nodemailer.createTransport(
+        smtpTransport ({
+                service: "Gmail",
+                auth: {
+                    user: "mobinulislammahi@gmail.com",
+                    pass: pass
+                },
+            }
+        )
+    );
+    
+    let mailOptions = {
+        from:'Trade Mark <mobinulislammahi@gmail.com>',
+        to: EmailTo,
+        subject: EmailSubject,
+        text:EmailText,
     }
-
-    return await transporter.sendMail(mailOption)
+    return await transporter.sendMail(mailOptions);
 }
 
+
 module.exports=EmailSend;
+// ydtb ztch fzfs rbkj 
